@@ -9,9 +9,8 @@ public enum TimeFormat {
     absolute;
 
     // Uporabljam ob izpisovanju glede na izbiro uporabnika
-    public static String convertTimeToString(TimeFormat time_format, LocalTime time) {
+    public static String convertTimeToString(TimeFormat time_format, LocalTime time, LocalTime now) {
         if (time_format == relative) {
-            LocalTime now = LocalTime.now();
             int minutes = (int) MINUTES.between(now, time);
             return minutes + " min";
         } else {

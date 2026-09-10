@@ -72,9 +72,8 @@ class Main {
     }
 
     // Pridobi vse case za izbrano postajo v naslednjih dveh urah
-    static ArrayList<StopTime> getStopTimes(final int station_id, final String file) {
+    static ArrayList<StopTime> getStopTimes(final int station_id, final String file, LocalTime time_now) {
         ArrayList<StopTime> stop_times = new ArrayList<>();
-        LocalTime time_now = LocalTime.now();
 
         try (BufferedReader br = new BufferedReader(new FileReader(new File(file)))) {
             String line = br.readLine(); // prvo vrstico izpustimo
@@ -107,13 +106,15 @@ class Main {
             return;
         }
 
+        LocalTime time_now = LocalTime.now();
+
         station_id = Integer.parseInt(args[0]);
         num_buses_per_line = Integer.parseInt(args[1]);
         time_format = "absolute".equals(args[2]) ? TimeFormat.absolute : TimeFormat.relative;
 
         Station station = new Station(station_id, stops_file);
 
-        ArrayList<StopTime> stop_times = getStopTimes(station_id, stop_times_file);
+        ArrayList<StopTime> stop_times = getStopTimes(station_id, stop_times_file, time_now);
 
         Map<Integer, String> routes_by_id = getRoutes(routes_file);
 
@@ -152,7 +153,8 @@ class Main {
             for (EnchantedStopTime e : list) {
                 if (count >= num_buses_per_line)
                     break;
-                System.out.println(e.headsign + "\t" + TimeFormat.convertTimeToString(time_format, e.arrival_time));
+                System.out.println(e.headsign + "\t"
+                        + TimeFormat.convertTimeToString(time_format, e.arrival_time, time_now));
                 ++count;
             }
 
