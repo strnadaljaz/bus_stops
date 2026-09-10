@@ -1,3 +1,5 @@
+package main;
+
 public class Trip {
     String id;
     public int route_id;
