@@ -137,8 +137,13 @@ class Main {
 
             System.out.println(label + ":");
 
+            int count = 0;
+
             for (EnchantedStopTime e : list) {
+                if (count >= num_buses_per_line)
+                    break;
                 System.out.println(e.headsign + "\t" + TimeFormat.convertTimeToString(time_format, e.arrival_time));
+                ++count;
             }
 
             System.out.println();
