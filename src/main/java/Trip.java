@@ -1,6 +1,6 @@
 public class Trip {
     String id;
-    public int route_id;
+    int route_id;
     String headsign;
 
     Trip(String id, int route_id, String headsign) {
