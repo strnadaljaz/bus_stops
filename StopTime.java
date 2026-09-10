@@ -1,7 +1,7 @@
 import java.time.LocalTime;
 
 public class StopTime {
-    LocalTime arrival_time;
+    public LocalTime arrival_time;
     String trip_id;
 
     StopTime(LocalTime arrival_time, String trip_id) {

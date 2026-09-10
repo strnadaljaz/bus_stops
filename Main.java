@@ -1,12 +1,15 @@
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File;
 import static java.time.temporal.ChronoUnit.MINUTES;
+import java.util.Comparator;
 
 class Main {
     static int station_id;
@@ -107,5 +110,21 @@ class Main {
         Map<Integer, String> routes_by_id = getRoutes(routes_file);
 
         Map<String, Trip> trips_by_id = getTrips(trips_file);
+
+        Map<Integer, List<EnchantedStopTime>> by_route = new LinkedHashMap<>();
+
+        for (StopTime st : stop_times) {
+            Trip trip = trips_by_id.get(st.trip_id);
+
+            String route_name = routes_by_id.get(trip.route_id);
+
+            EnchantedStopTime e = new EnchantedStopTime(st.arrival_time, trip.headsign, trip.route_id, route_name);
+
+            by_route.computeIfAbsent(trip.route_id, k -> new ArrayList<>()).add(e);
+        }
+
+        for (List<EnchantedStopTime> list : by_route.values()) {
+            list.sort(Comparator.comparing(e -> e.arrival_time));
+        }
     }
 }
