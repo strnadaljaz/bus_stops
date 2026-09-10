@@ -6,6 +6,7 @@ public enum TimeFormat {
     relative,
     absolute;
 
+    // Uporabljam ob izpisovanju glede na izbiro uporabnika
     public static String convertTimeToString(TimeFormat time_format, LocalTime time) {
         if (time_format == relative) {
             LocalTime now = LocalTime.now();

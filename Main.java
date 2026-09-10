@@ -12,6 +12,7 @@ import static java.time.temporal.ChronoUnit.MINUTES;
 import java.util.Comparator;
 
 class Main {
+    // parametri podani od uporabnika
     static int station_id;
     static int num_buses_per_line;
     static TimeFormat time_format;
@@ -21,6 +22,8 @@ class Main {
     static final String routes_file = "./gtfs/routes.txt";
     static final String trips_file = "./gtfs/trips.txt";
 
+    // Pridobi trips iz datoteke trips.txt
+    // Pridobivam imena in id-je
     static Map<String, Trip> getTrips(String file) {
         Map<String, Trip> trips = new HashMap<>();
 
@@ -43,6 +46,8 @@ class Main {
         return trips;
     }
 
+    // Pridobi route iz routes.txt
+    // Pridobivam id-je in imena
     static Map<Integer, String> getRoutes(String file) {
         Map<Integer, String> routes = new HashMap<>();
 
@@ -64,6 +69,7 @@ class Main {
         return routes;
     }
 
+    // Pridobi vse case za izbrano postajo v naslednjih dveh urah
     static ArrayList<StopTime> getStopTimes(final int station_id, final String file) {
         ArrayList<StopTime> stop_times = new ArrayList<>();
         LocalTime time_now = LocalTime.now();
@@ -113,6 +119,7 @@ class Main {
 
         Map<Integer, List<EnchantedStopTime>> by_route = new LinkedHashMap<>();
 
+        // Povezem case s naslovi tripov in imeni routov
         for (StopTime st : stop_times) {
             Trip trip = trips_by_id.get(st.trip_id);
 
@@ -123,6 +130,7 @@ class Main {
             by_route.computeIfAbsent(trip.route_id, k -> new ArrayList<>()).add(e);
         }
 
+        // Sortiram case
         for (List<EnchantedStopTime> list : by_route.values()) {
             list.sort(Comparator.comparing(e -> e.arrival_time));
         }
