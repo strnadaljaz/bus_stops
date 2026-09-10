@@ -1,0 +1,4 @@
+enum TimeFormat {
+    relative,
+    absolute
+}
