@@ -82,7 +82,7 @@ class Main {
 
                     long diff = MINUTES.between(arrival_time, time_now);
 
-                    if (diff <= 120)
+                    if (diff <= 120 && diff >= 0)
                         stop_times.add(new StopTime(arrival_time, trip_id));
                 }
             }
