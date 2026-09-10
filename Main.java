@@ -126,5 +126,22 @@ class Main {
         for (List<EnchantedStopTime> list : by_route.values()) {
             list.sort(Comparator.comparing(e -> e.arrival_time));
         }
+
+        // Izpis
+        System.out.println(station.getName() + "\n");
+        for (Map.Entry<Integer, List<EnchantedStopTime>> entry : by_route.entrySet()) {
+
+            List<EnchantedStopTime> list = entry.getValue();
+
+            String label = list.get(0).route_label;
+
+            System.out.println(label + ":");
+
+            for (EnchantedStopTime e : list) {
+                System.out.println(e.headsign + "\t" + e.arrival_time);
+            }
+
+            System.out.println();
+        }
     }
 }
