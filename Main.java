@@ -80,7 +80,7 @@ class Main {
                     String trip_id = columns[0];
                     LocalTime arrival_time = LocalTime.parse(columns[1]);
 
-                    long diff = MINUTES.between(arrival_time, time_now);
+                    long diff = MINUTES.between(time_now, arrival_time);
 
                     if (diff <= 120 && diff >= 0)
                         stop_times.add(new StopTime(arrival_time, trip_id));
@@ -101,7 +101,7 @@ class Main {
 
         station_id = Integer.parseInt(args[0]);
         num_buses_per_line = Integer.parseInt(args[1]);
-        time_format = args[2] == "absolute" ? TimeFormat.absolute : TimeFormat.relative;
+        time_format = "absolute".equals(args[2]) ? TimeFormat.absolute : TimeFormat.relative;
 
         Station station = new Station(station_id, stops_file);
 
@@ -138,7 +138,7 @@ class Main {
             System.out.println(label + ":");
 
             for (EnchantedStopTime e : list) {
-                System.out.println(e.headsign + "\t" + e.arrival_time);
+                System.out.println(e.headsign + "\t" + TimeFormat.convertTimeToString(time_format, e.arrival_time));
             }
 
             System.out.println();

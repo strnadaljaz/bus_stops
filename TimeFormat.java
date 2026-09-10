@@ -1,4 +1,20 @@
-enum TimeFormat {
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import static java.time.temporal.ChronoUnit.MINUTES;
+
+public enum TimeFormat {
     relative,
-    absolute
+    absolute;
+
+    public static String convertTimeToString(TimeFormat time_format, LocalTime time) {
+        if (time_format == relative) {
+            LocalTime now = LocalTime.now();
+            int minutes = (int) MINUTES.between(now, time);
+            return minutes + " min";
+        } else {
+            DateTimeFormatter HH_MM = DateTimeFormatter.ofPattern("HH:mm");
+
+            return time.format(HH_MM).toString();
+        }
+    }
 }
