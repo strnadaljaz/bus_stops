@@ -7,7 +7,7 @@ public class Station {
     int id;
     String name;
 
-    Station(int station_id, String stops_file) throws IOException {
+    Station(int station_id, String stops_file) {
         this.id = station_id;
 
         // Source - https://stackoverflow.com/a/5868528
@@ -27,6 +27,8 @@ public class Station {
                     break;
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
