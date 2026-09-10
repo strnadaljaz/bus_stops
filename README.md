@@ -3,8 +3,6 @@
 javac Main.java
 java Main {station_id} {num_buses_per_line} {relative|absolute}
 ```
-```
-```
 
 # Kako narediti nalogo zahtevnejso
 - Avtobusi, ki vozijo cez polnoc (23:30 -> 25:30)

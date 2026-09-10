@@ -17,10 +17,10 @@ class Main {
     static int num_buses_per_line;
     static TimeFormat time_format;
 
-    static final String stops_file = "./gtfs/stops.txt";
-    static final String stop_times_file = "./gtfs/stop_times.txt";
-    static final String routes_file = "./gtfs/routes.txt";
-    static final String trips_file = "./gtfs/trips.txt";
+    static final String stops_file = "../gtfs/stops.txt";
+    static final String stop_times_file = "../gtfs/stop_times.txt";
+    static final String routes_file = "../gtfs/routes.txt";
+    static final String trips_file = "../gtfs/trips.txt";
 
     // Pridobi trips iz datoteke trips.txt
     // Pridobivam imena in id-je
