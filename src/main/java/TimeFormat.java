@@ -1,5 +1,3 @@
-package main;
-
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import static java.time.temporal.ChronoUnit.MINUTES;

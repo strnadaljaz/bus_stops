@@ -1,5 +1,3 @@
-package main;
-
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -13,16 +11,16 @@ import java.io.File;
 import static java.time.temporal.ChronoUnit.MINUTES;
 import java.util.Comparator;
 
-class Main {
+public class Main {
     // parametri podani od uporabnika
     static int station_id;
     static int num_buses_per_line;
     static TimeFormat time_format;
 
-    static final String stops_file = "../../gtfs/stops.txt";
-    static final String stop_times_file = "../../gtfs/stop_times.txt";
-    static final String routes_file = "../../gtfs/routes.txt";
-    static final String trips_file = "../../gtfs/trips.txt";
+    static final String stops_file = "./gtfs/stops.txt";
+    static final String stop_times_file = "./gtfs/stop_times.txt";
+    static final String routes_file = "./gtfs/routes.txt";
+    static final String trips_file = "./gtfs/trips.txt";
 
     // Pridobi trips iz datoteke trips.txt
     // Pridobivam imena in id-je
@@ -146,7 +144,7 @@ class Main {
 
             String label = list.get(0).route_label;
 
-            System.out.println(label + ":");
+            System.out.println("Route: " + label);
 
             int count = 0;
 
