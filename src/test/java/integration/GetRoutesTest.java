@@ -14,7 +14,7 @@ class GetRoutesTest {
 
     @Test
     void getRoutesCorrectlyReadsDataFromFile() throws IOException {
-        String file1 = "./src/test/java/integration/routes_test_file1.txt";
+        String file1 = "./src/test/java/integration/test_files/routes_test_file1.txt";
         String file2 = "./does/not/exist.txt";
 
         Map<Integer, String> routes = new HashMap<>();

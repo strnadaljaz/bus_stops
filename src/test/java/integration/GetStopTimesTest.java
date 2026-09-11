@@ -6,17 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import busstops.*;
 
 class GetStopTimesTest {
 
     @Test
     void getStopTimesCorrectlyReadsDataFromFile() throws IOException {
-        String file1 = "./src/test/java/integration/stop_times_test_file1.txt";
+        String file1 = "./src/test/java/integration/test_files/stop_times_test_file1.txt";
         String file2 = "./does/not/exist.txt";
 
         assertThrows(IOException.class, () -> ReadFiles.getRoutes(file2));

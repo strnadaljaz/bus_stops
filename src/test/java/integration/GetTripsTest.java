@@ -14,7 +14,7 @@ class GetTripsTest {
 
     @Test
     void getTripsCorrectlyReadsDataFromFile() throws IOException {
-        String file1 = "./src/test/java/integration/trips_test_file1.txt";
+        String file1 = "./src/test/java/integration/test_files/trips_test_file1.txt";
         String file2 = "./does/not/exist.txt";
 
         Map<String, Trip> trips = new HashMap<>();
