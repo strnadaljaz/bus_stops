@@ -63,7 +63,7 @@ public class Main {
         }
 
         // Izpis
-        System.out.println(station.getName() + "\n");
+        System.out.println("Station: " + station.getName() + "\n");
         for (Map.Entry<Integer, List<EnchantedStopTime>> entry : by_route.entrySet()) {
 
             List<EnchantedStopTime> list = entry.getValue();
