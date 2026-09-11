@@ -38,7 +38,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <mainClass>Main</mainClass>
+                    <mainClass>busstops.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -15,9 +15,9 @@ import java.util.Comparator;
 
 public class Main {
     // parametri podani od uporabnika
-    static int station_id;
-    static int num_buses_per_line;
-    static TimeFormat time_format;
+    public static int station_id;
+    public static int num_buses_per_line;
+    public static TimeFormat time_format;
 
     static final String stops_file = "./gtfs/stops.txt";
     static final String stop_times_file = "./gtfs/stop_times.txt";
