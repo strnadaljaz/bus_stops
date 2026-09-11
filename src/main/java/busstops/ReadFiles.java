@@ -9,7 +9,9 @@ import java.io.IOException;
 
 public class ReadFiles {
 
-    public static Map<String, Trip> getTrips(String file) {
+    // Pridobi trips iz datoteke trips.txt
+    // Pridobivam imena in id-je
+    public static Map<String, Trip> getTrips(String file) throws IOException {
         Map<String, Trip> trips = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(new File(file)))) {
@@ -24,8 +26,6 @@ public class ReadFiles {
 
                 trips.put(trip_id, new Trip(trip_id, route_id, trip_headsign));
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         return trips;

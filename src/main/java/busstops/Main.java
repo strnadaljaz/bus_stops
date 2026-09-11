@@ -24,30 +24,6 @@ public class Main {
     static final String routes_file = "./gtfs/routes.txt";
     static final String trips_file = "./gtfs/trips.txt";
 
-    // Pridobi trips iz datoteke trips.txt
-    // Pridobivam imena in id-je
-    public static Map<String, Trip> getTrips(String file) {
-        Map<String, Trip> trips = new HashMap<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(new File(file)))) {
-            String line = br.readLine(); // prvo vrstico izpustimo
-
-            while ((line = br.readLine()) != null) {
-                String[] columns = line.split(",");
-
-                int route_id = Integer.parseInt(columns[0]);
-                String trip_id = columns[2];
-                String trip_headsign = columns[3];
-
-                trips.put(trip_id, new Trip(trip_id, route_id, trip_headsign));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return trips;
-    }
-
     // Pridobi route iz routes.txt
     // Pridobivam id-je in imena
     static Map<Integer, String> getRoutes(String file) {
@@ -100,7 +76,7 @@ public class Main {
         return stop_times;
     }
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         if (args.length != 3) {
             System.out.println("Wrong number of arguments");
             return;
@@ -118,7 +94,7 @@ public class Main {
 
         Map<Integer, String> routes_by_id = getRoutes(routes_file);
 
-        Map<String, Trip> trips_by_id = getTrips(trips_file);
+        Map<String, Trip> trips_by_id = ReadFiles.getTrips(trips_file);
 
         Map<Integer, List<EnchantedStopTime>> by_route = new LinkedHashMap<>();
 
