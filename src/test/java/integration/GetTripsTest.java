@@ -23,6 +23,10 @@ class GetTripsTest {
 
         assertEquals(3, trips.size());
 
+        Trip trip = trips.get("NORMAL_03_101_Return_22:10");
+        assertEquals("Uhud battlefield", trip.headsign);
+        assertEquals(101, trip.route_id);
+
         assertThrows(IOException.class, () -> ReadFiles.getTrips(file2));
     }
 }
