@@ -35,7 +35,7 @@ public class ReadFiles {
     }
 
     // Pridobi vse case za izbrano postajo v naslednjih dveh urah
-    static ArrayList<StopTime> getStopTimes(final int station_id, final String file, LocalTime time_now)
+    public static ArrayList<StopTime> getStopTimes(final int station_id, final String file, LocalTime time_now)
             throws IOException {
         ArrayList<StopTime> stop_times = new ArrayList<>();
 
