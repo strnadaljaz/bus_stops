@@ -24,58 +24,6 @@ public class Main {
     static final String routes_file = "./gtfs/routes.txt";
     static final String trips_file = "./gtfs/trips.txt";
 
-    // Pridobi route iz routes.txt
-    // Pridobivam id-je in imena
-    static Map<Integer, String> getRoutes(String file) {
-        Map<Integer, String> routes = new HashMap<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(new File(file)))) {
-            String line = br.readLine(); // prvo vrstico izpustimo
-
-            while ((line = br.readLine()) != null) {
-                String[] columns = line.split(",");
-
-                int route_id = Integer.parseInt(columns[0]);
-                String route_name = columns[2];
-
-                routes.put(route_id, route_name);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return routes;
-    }
-
-    // Pridobi vse case za izbrano postajo v naslednjih dveh urah
-    static ArrayList<StopTime> getStopTimes(final int station_id, final String file, LocalTime time_now) {
-        ArrayList<StopTime> stop_times = new ArrayList<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(new File(file)))) {
-            String line = br.readLine(); // prvo vrstico izpustimo
-
-            while ((line = br.readLine()) != null) {
-                String columns[] = line.split(",");
-
-                int stop_id = Integer.parseInt(columns[3]);
-
-                if (stop_id == station_id) {
-                    String trip_id = columns[0];
-                    LocalTime arrival_time = LocalTime.parse(columns[1]);
-
-                    long diff = MINUTES.between(time_now, arrival_time);
-
-                    if (diff <= 120 && diff >= 0)
-                        stop_times.add(new StopTime(arrival_time, trip_id));
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return stop_times;
-    }
-
     public static void main(String args[]) throws IOException {
         if (args.length != 3) {
             System.out.println("Wrong number of arguments");
@@ -90,9 +38,9 @@ public class Main {
 
         Station station = new Station(station_id, stops_file);
 
-        ArrayList<StopTime> stop_times = getStopTimes(station_id, stop_times_file, time_now);
+        ArrayList<StopTime> stop_times = ReadFiles.getStopTimes(station_id, stop_times_file, time_now);
 
-        Map<Integer, String> routes_by_id = getRoutes(routes_file);
+        Map<Integer, String> routes_by_id = ReadFiles.getRoutes(routes_file);
 
         Map<String, Trip> trips_by_id = ReadFiles.getTrips(trips_file);
 
