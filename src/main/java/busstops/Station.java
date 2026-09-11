@@ -1,13 +1,15 @@
+package busstops;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.File;
 
 public class Station {
-    int id;
-    String name;
+    public int id;
+    public String name;
 
-    Station(int station_id, String stops_file) {
+    public Station(int station_id, String stops_file) {
         this.id = station_id;
 
         // Source - https://stackoverflow.com/a/5868528

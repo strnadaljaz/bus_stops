@@ -1,3 +1,5 @@
+package busstops;
+
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class Main {
 
     // Pridobi trips iz datoteke trips.txt
     // Pridobivam imena in id-je
-    static Map<String, Trip> getTrips(String file) {
+    public static Map<String, Trip> getTrips(String file) {
         Map<String, Trip> trips = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(new File(file)))) {
