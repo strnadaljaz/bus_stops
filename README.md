@@ -5,6 +5,11 @@ Zagon programa:
 mvn compile exec:java -Dexec.args="{station_id} {num_buses_per_line} {absolute|relative}"
 ```
 
+Zagon testov:
+```bash
+mvn clean test
+```
+
 # Kako narediti nalogo zahtevnejso
 - Avtobusi, ki vozijo cez polnoc (23:30 -> 25:30)
 - Linije, ki bi vozile le ob dolocenih dnevih
