@@ -1,7 +1,8 @@
 # Kako zagnati program
+Predpogoj sta instalirana JDK in maven.
+Zagon programa:
 ```bash
-javac Main.java
-java Main {station_id} {num_buses_per_line} {relative|absolute}
+mvn compile exec:java -Dexec.args="{station_id} {num_buses_per_line} {absolute|relative}"
 ```
 
 # Kako narediti nalogo zahtevnejso
