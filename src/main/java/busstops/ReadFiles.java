@@ -64,7 +64,7 @@ public class ReadFiles {
 
     // Pridobi route iz routes.txt
     // Pridobivam id-je in imena
-    static Map<Integer, String> getRoutes(String file) throws IOException {
+    public static Map<Integer, String> getRoutes(String file) throws IOException {
         Map<Integer, String> routes = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(new File(file)))) {
